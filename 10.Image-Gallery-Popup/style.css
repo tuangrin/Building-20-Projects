@@ -1,0 +1,44 @@
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+.gallery{
+     display: grid;
+     grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+}
+
+.img-container img{
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     cursor: pointer;
+}
+
+.modal{
+     background: rgba(0, 0, 0, 0.5); /*แบ็คดอป? เป็นพื้นที่สำหรับแสดงภาพเต็ม*/
+     position: fixed;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     pointer-events: none; /*ไม่เห็นและไม่สามารถคลิกได้*/
+     opacity: 0; /*ตอนแรกยังไม่แสดงผล จะแสดงผลเมื่อคลิกเท่านั้น*/
+     transition: all 0.3s ease-in-out;
+}
+
+.full-image{
+     position: absolute;
+     height: 85%;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     transition: all 0.3s ease-in-out;
+}
+
+/* ต้องเขียนติดกัน เขียนห่างไม่ได้ เช่น .modal .open */
+.modal.open{
+     opacity: 1;
+     pointer-events: all; /*สามารถคลิกตัว modal ได้แล้ว ให้ modal โต้ตอบกับผู้ใช้ได้ เช่น ต้องการปิด*/
+}
